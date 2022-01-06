@@ -10,7 +10,7 @@ def new_slot(driver: WebDriver, info: HealthInfo):
     doer: Doer = Doer(driver)
     accept_terms(driver, doer)
     doer.wait_a_little(secs=2)
-    fill_hc_info(driver, doer, info)
+    fill_hc_info(doer, info)
     rest(driver, doer, info)
 
 
@@ -90,7 +90,7 @@ def accept_terms(driver: WebDriver, doer: Doer):
     doer.click_when_enabled(element_id="continue_button")
 
 
-def fill_hc_info(driver: WebDriver, doer: Doer, info: HealthInfo):
+def fill_hc_info(doer: Doer, info: HealthInfo):
     doer.wait_till_url(
         "https://covid19.ontariohealth.ca/app-identity?viewId=U5GBUDFZ526Z"
     )

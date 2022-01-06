@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9966557956915adda308fefb13199cb3d66fced26f82846ee6034cc975eb525b"
+            "sha256": "ca298e7c3a1508facbb982580307a930d3bf6eae0d06a2932b4000f420e9e33f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -143,6 +143,14 @@
             "markers": "python_version >= '3.5'",
             "version": "==3.3"
         },
+        "loguru": {
+            "hashes": [
+                "sha256:b28e72ac7a98be3d28ad28570299a393dfcd32e5e3f6a353dec94675767b6319",
+                "sha256:f8087ac396b5ee5f67c963b495d615ebbceac2796379599820e324419d53667c"
+            ],
+            "index": "pypi",
+            "version": "==0.5.3"
+        },
         "outcome": {
             "hashes": [
                 "sha256:c7dd9375cfd3c12db9801d080a3b63d4b0a261aa996c4c13152380587288d958",
@@ -177,7 +185,7 @@
                 "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926",
                 "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'",
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==1.16.0"
         },
         "sniffio": {

@@ -1,7 +1,6 @@
 from loguru import logger
 from selenium.webdriver import ActionChains
 from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.remote.webelement import WebElement
 
 from coto.data import HealthInfo
 from coto.doer import Doer
@@ -34,7 +33,7 @@ def rest(driver: WebDriver, doer: Doer, info: HealthInfo):
     # Wait until https://vaccine.covaxonbooking.ca/location-search?config=4b7b8b6d-8848-454f-a61b-1926f4d5011e
     doer.ele_id("location-search-address").send_keys(info.postal_code)
 
-    i_agree_btn: WebElement = doer.ele_css("button.tw-w-full")
+    i_agree_btn = doer.ele_css("button.tw-w-full")
     # Wait until enabled: i_agree_btn
     i_agree_btn.click()
 
@@ -78,8 +77,8 @@ def accept_terms(driver: WebDriver, doer: Doer):
 
     doer.wait_a_little(secs=2)
 
-    # terms_checkbox: WebElement = doer.ele_id("acceptedTerm1")
-    terms_checkbox: WebElement = doer.ele_css("#terms-label .fas.fa-square.fa-stack-2x")
+    # terms_checkbox = doer.ele_id("acceptedTerm1")
+    terms_checkbox = doer.ele_css("#terms-label .fas.fa-square.fa-stack-2x")
     logger.debug(
         f"Terms Checkbox: {terms_checkbox.id} {terms_checkbox.text} {terms_checkbox.tag_name} {terms_checkbox.location} {terms_checkbox.__dict__}"
     )

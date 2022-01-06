@@ -24,7 +24,7 @@ class Doer(object):
 
     def at_url(self, url):
         def there_yet():
-            return self.driver.current_url.startswith(url.split('?')[0])
+            return self.driver.current_url.startswith(url.split("?")[0])
 
         while not there_yet():
             time.sleep(1)
@@ -33,20 +33,31 @@ class Doer(object):
     def click_when_enabled(self, element_id):
         continue_button: WebElement = self.driver.find_element(By.ID, element_id)
         self.wait_till_enabled(element_id=continue_button.id)
-        logger.debug(f'Clicking {element_id}.')
+        logger.debug(f"Clicking {element_id}.")
         continue_button.click()
 
     def wait_till_enabled(self, element_id):
-        logger.debug(f"Waiting for the element {element_id} to be enabled on {driver.current_url}")
+        logger.debug(
+            f"Waiting for the element {element_id} to be enabled on {driver.current_url}"
+        )
         WebDriverWait(self.driver, timeout=TIMEOUT_IN_SECS).until(
-            lambda d: d.find_element(By.ID, element_id).is_enabled())
+            lambda d: d.find_element(By.ID, element_id).is_enabled()
+        )
 
     def wait_a_little(self, secs: int):
         logger.debug(f"Waiting for {secs} seconds on {driver.current_url}")
-        WebDriverWait(self.driver, timeout=TIMEOUT_IN_SECS).until_not(lambda _: time.sleep(secs))
-        logger.debug(f"After wait, on page: {driver.title} w/ url: {driver.current_url}")
+        WebDriverWait(self.driver, timeout=TIMEOUT_IN_SECS).until_not(
+            lambda _: time.sleep(secs)
+        )
+        logger.debug(
+            f"After wait, on page: {driver.title} w/ url: {driver.current_url}"
+        )
 
     def wait_till_url(self, url):
-        logger.debug(f"Waiting for url change from {driver.current_url} to expected: {url}")
+        logger.debug(
+            f"Waiting for url change from {driver.current_url} to expected: {url}"
+        )
         WebDriverWait(self.driver, timeout=180).until(lambda d: at_url(d, url))
-        logger.debug(f"After wait, on page: {driver.title} w/ url: {driver.current_url}")
+        logger.debug(
+            f"After wait, on page: {driver.title} w/ url: {driver.current_url}"
+        )

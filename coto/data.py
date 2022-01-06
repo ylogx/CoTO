@@ -21,5 +21,5 @@ def get_data() -> HealthInfo:
         os.getenv("email"),
         os.getenv("phone"),
     )
-    logger.debug(f'Current info: {info}')
+    logger.debug(f"Current info: {info}")
     return info

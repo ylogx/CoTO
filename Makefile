@@ -2,10 +2,7 @@ lint:
 	pipenv run black .
 
 run:
-	pipenv run python run.py stb-back-test
-
-irun:
-	pipenv run python run.py international-back-test
+	pipenv run python run.py book-newer-slot
 
 install:
 	pipenv install

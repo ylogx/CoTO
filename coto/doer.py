@@ -1,5 +1,6 @@
 import time
 
+from loguru import logger
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
@@ -13,8 +14,8 @@ class Doer(object):
         self.driver: WebDriver = driver
         super().__init__()
 
-    def ele_id(self, id) -> WebElement:
-        return self.driver.find_element(By.ID, id)
+    def ele_id(self, element_id) -> WebElement:
+        return self.driver.find_element(By.ID, element_id)
 
     def ele_css(self, css_selector) -> WebElement:
         return self.driver.find_element(By.CSS_SELECTOR, css_selector)
@@ -45,19 +46,19 @@ class Doer(object):
         )
 
     def wait_a_little(self, secs: int):
-        logger.debug(f"Waiting for {secs} seconds on {driver.current_url}")
+        logger.debug(f"Waiting for {secs} seconds on {self.driver.current_url}")
         WebDriverWait(self.driver, timeout=TIMEOUT_IN_SECS).until_not(
             lambda _: time.sleep(secs)
         )
         logger.debug(
-            f"After wait, on page: {driver.title} w/ url: {driver.current_url}"
+            f"After wait, on page: {self.driver.title} w/ url: {self.driver.current_url}"
         )
 
     def wait_till_url(self, url):
         logger.debug(
-            f"Waiting for url change from {driver.current_url} to expected: {url}"
+            f"Waiting for url change from {self.driver.current_url} to expected: {url}"
         )
-        WebDriverWait(self.driver, timeout=180).until(lambda d: at_url(d, url))
+        WebDriverWait(self.driver, timeout=180).until(lambda d: self.at_url(url))
         logger.debug(
-            f"After wait, on page: {driver.title} w/ url: {driver.current_url}"
+            f"After wait, on page: {self.driver.title} w/ url: {self.driver.current_url}"
         )

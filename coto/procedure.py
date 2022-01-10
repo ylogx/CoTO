@@ -13,6 +13,8 @@ def new_slot(driver: WebDriver, info: HealthInfo):
     fill_hc_info(doer, info)
     rest(driver, doer, info)
 
+    # driver.quit()
+
 
 def rest(driver: WebDriver, doer: Doer, info: HealthInfo):
     # Wait until, url is 'https://covid19.ontariohealth.ca/app-identity?viewId=U5GBUDFZ526Z'
@@ -68,8 +70,6 @@ def rest(driver: WebDriver, doer: Doer, info: HealthInfo):
     # div.tw-p-6
     booking_info = doer.ele_css("div.tw-p-6").text
     driver.save_screenshot("current-booking.png")
-
-    # driver.quit()
 
 
 def accept_terms(driver: WebDriver, doer: Doer):

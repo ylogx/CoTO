@@ -37,13 +37,17 @@ class Doer(object):
         logger.debug(f"Clicking {element_id}.")
         continue_button.click()
 
+    def is_enabled(self, element_id):
+        def there_yet():
+            return self.driver.find_element(By.ID, element_id).is_enabled()
+
+        while not there_yet():
+            time.sleep(1)
+        return there_yet()
+
     def wait_till_enabled(self, element_id):
-        logger.debug(
-            f"Waiting for the element {element_id} to be enabled on {driver.current_url}"
-        )
-        WebDriverWait(self.driver, timeout=TIMEOUT_IN_SECS).until(
-            lambda d: d.find_element(By.ID, element_id).is_enabled()
-        )
+        logger.debug(f"Waiting for the element {element_id} to be enabled on {self.driver.current_url}")
+        WebDriverWait(self.driver, timeout=TIMEOUT_IN_SECS).until(lambda d: self.is_enabled(element_id))
 
     def wait_a_little(self, secs: int):
         logger.debug(f"Waiting for {secs} seconds on {self.driver.current_url}")

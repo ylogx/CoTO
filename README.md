@@ -1,7 +1,10 @@
 CoTO
 ====
 
-Covid TO - Toronto/Ontario covid appointment booking website automation.
+Covid TO - Toronto & Ontario COVID-19 vaccine appointment booking website automation.
+
+The purpose of this project is to reduce the headache of filling out all the information to see if the vaccine slots
+are available or not.
 
 
 ## Installation
@@ -15,7 +18,8 @@ make install
 
 
 ## Run
-Before running the application, fill your required details in the `.env` file. See `coto/data.py` for the required fields.
+Before running the application, use the template file by running `cp .env.tpl .env`.
+Fill your required details in the `.env` file. These will be used to fill field on the appointment website.
 
 To run the automation for booking a new appointment slot, use:
 
